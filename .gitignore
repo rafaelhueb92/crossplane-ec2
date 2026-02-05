@@ -1,0 +1,2 @@
+*.pem 
+connect_ec2.sh

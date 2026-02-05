@@ -33,7 +33,7 @@ else
 fi
 
 echo "🔑 Creating Key Pair (if not exists)"
-if ! aws ec2 describe-key-pairs --key-names devops-automation >/dev/null 2>&1; then
+if ! aws ec2 describe-key-pairs --key-names $SRV >/dev/null 2>&1; then
   aws ec2 create-key-pair \
     --key-name $SRV \
     --key-type rsa \
@@ -78,7 +78,7 @@ if [ -f "$PEM" ]; then
   echo "🔑 To access your instance run:"
   echo $COMMAND
   echo $COMMAND > connect_ec2.sh
-  cmod +x connect_ec2.sh
+  chmod +x connect_ec2.sh
 else
   echo "⚠️ PEM file was not created in this run (key pair pre-existed)."
   echo "Use your existing $PEM PEM to connect:"

@@ -30,4 +30,8 @@ rm -f kubectl kubectl.sha256
 docker --version
 kubectl version --client
 
-echo "Docker and kubectl installation complete" | tee /var/log/user-data-complete.log
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+echo "Docker, kubectl, and kind installation complete" | tee /var/log/user-data-complete.log
